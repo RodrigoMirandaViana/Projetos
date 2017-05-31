@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/29/2017 11:09:10
+-- Date Created: 05/31/2017 10:31:46
 -- Generated from EDMX file: C:\Users\1615580\Source\Repos\Projetos\Projeto01\Projeto01\Models\BaseDoProjeto.edmx
 -- --------------------------------------------------
 
@@ -17,30 +17,40 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_CarroModelo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Modelos] DROP CONSTRAINT [FK_CarroModelo];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[Modelos]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Modelos];
+GO
+IF OBJECT_ID(N'[dbo].[Carros]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Carros];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
 -- --------------------------------------------------
 
--- Creating table 'CarroMarcas'
-CREATE TABLE [dbo].[CarroMarcas] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Nome] nvarchar(max)  NOT NULL,
-    [Descricao] nvarchar(max)  NOT NULL
-);
-GO
-
 -- Creating table 'Modelos'
 CREATE TABLE [dbo].[Modelos] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Nome] nvarchar(max)  NOT NULL,
-    [Ano] nvarchar(max)  NOT NULL,
-    [CarroMarcaId] int  NOT NULL
+    [Nome] nvarchar(50)  NOT NULL,
+    [Ano] nvarchar(10)  NOT NULL,
+    [CarroId] int  NOT NULL
+);
+GO
+
+-- Creating table 'Carros'
+CREATE TABLE [dbo].[Carros] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Nome] nvarchar(50)  NOT NULL,
+    [Descricao] nvarchar(max)  NOT NULL,
+    [Popular] bit  NULL
 );
 GO
 
@@ -48,15 +58,15 @@ GO
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
 
--- Creating primary key on [Id] in table 'CarroMarcas'
-ALTER TABLE [dbo].[CarroMarcas]
-ADD CONSTRAINT [PK_CarroMarcas]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
 -- Creating primary key on [Id] in table 'Modelos'
 ALTER TABLE [dbo].[Modelos]
 ADD CONSTRAINT [PK_Modelos]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Carros'
+ALTER TABLE [dbo].[Carros]
+ADD CONSTRAINT [PK_Carros]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -64,19 +74,19 @@ GO
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on [CarroMarcaId] in table 'Modelos'
+-- Creating foreign key on [CarroId] in table 'Modelos'
 ALTER TABLE [dbo].[Modelos]
-ADD CONSTRAINT [FK_CarroMarcaModelo]
-    FOREIGN KEY ([CarroMarcaId])
-    REFERENCES [dbo].[CarroMarcas]
+ADD CONSTRAINT [FK_CarroModelo]
+    FOREIGN KEY ([CarroId])
+    REFERENCES [dbo].[Carros]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_CarroMarcaModelo'
-CREATE INDEX [IX_FK_CarroMarcaModelo]
+-- Creating non-clustered index for FOREIGN KEY 'FK_CarroModelo'
+CREATE INDEX [IX_FK_CarroModelo]
 ON [dbo].[Modelos]
-    ([CarroMarcaId]);
+    ([CarroId]);
 GO
 
 -- --------------------------------------------------

@@ -25,7 +25,7 @@ namespace Projeto01.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CarroMarca> CarroMarcas { get; set; }
-        public virtual DbSet<Modelo> Modelos { get; set; }
+        public virtual DbSet<ModeloCar> Modelos { get; set; }
+        public virtual DbSet<Carro> Carros { get; set; }
     }
 }

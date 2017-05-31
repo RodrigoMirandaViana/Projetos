@@ -145,8 +145,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Views\Modelo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
@@ -226,6 +224,7 @@
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Views\CarroMarca\CadastroCarro.aspx" />
+    <Content Include="Views\CarroMarca\CadastroModelo.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="packages.config" />
@@ -257,6 +256,8 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\CarrosController.cs" />
+    <Compile Include="Controllers\ModelosController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -282,10 +283,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BaseDoProjeto.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\CarroMarca.cs">
+    <Compile Include="Models\Carro.cs">
       <DependentUpon>BaseDoProjeto.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Modelo.cs">
+    <Compile Include="Models\ModeloCar.cs">
       <DependentUpon>BaseDoProjeto.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -310,12 +311,22 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Views\BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Views\CarroMarca\CadastroCarro.aspx.cs">
       <DependentUpon>CadastroCarro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\CarroMarca\CadastroCarro.aspx.designer.cs">
       <DependentUpon>CadastroCarro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CarroMarca\CadastroModelo.aspx.cs">
+      <DependentUpon>CadastroModelo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\CarroMarca\CadastroModelo.aspx.designer.cs">
+      <DependentUpon>CadastroModelo.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

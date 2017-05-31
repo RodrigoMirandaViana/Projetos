@@ -6,39 +6,40 @@
     <edmx:StorageModels>
     <Schema Namespace="BaseDoProjeto.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="BaseDoProjetoStoreContainer">
-    <EntitySet Name="CarroMarcas" EntityType="BaseDoProjeto.Store.CarroMarcas" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Modelos" EntityType="BaseDoProjeto.Store.Modelos" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="CarroMarcaModelo" Association="BaseDoProjeto.Store.CarroMarcaModelo">
-      <End Role="CarroMarca" EntitySet="CarroMarcas" />
+    <EntitySet Name="Carros" EntityType="BaseDoProjeto.Store.Carros" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="CarroModelo" Association="BaseDoProjeto.Store.CarroModelo">
+      <End Role="Carro" EntitySet="Carros" />
       <End Role="Modelo" EntitySet="Modelos" />
     </AssociationSet>
   </EntityContainer>
-  <EntityType Name="CarroMarcas">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Descricao" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
   <EntityType Name="Modelos">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Ano" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="CarroMarcaId" Type="int" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Ano" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="CarroId" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="CarroMarcaModelo">
-    <End Role="CarroMarca" Type="BaseDoProjeto.Store.CarroMarcas" Multiplicity="1" />
+  <EntityType Name="Carros">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Descricao" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Popular" Type="bit" Nullable="true" />
+  </EntityType>
+  <Association Name="CarroModelo">
+    <End Role="Carro" Type="BaseDoProjeto.Store.Carros" Multiplicity="1" />
     <End Role="Modelo" Type="BaseDoProjeto.Store.Modelos" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="CarroMarca">
+      <Principal Role="Carro">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Modelo">
-        <PropertyRef Name="CarroMarcaId" />
+        <PropertyRef Name="CarroId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -47,41 +48,42 @@
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="BaseDoProjeto" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="BaseDoProjetoContainer" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CarroMarcas" EntityType="BaseDoProjeto.CarroMarca" />
-          <EntitySet Name="Modelos" EntityType="BaseDoProjeto.Modelo" />
-          <AssociationSet Name="CarroMarcaModelo" Association="BaseDoProjeto.CarroMarcaModelo">
-            <End Role="CarroMarca" EntitySet="CarroMarcas" />
+          <EntitySet Name="Modelos" EntityType="BaseDoProjeto.ModeloCar" />
+          <EntitySet Name="Carros" EntityType="BaseDoProjeto.Carro" />
+          <AssociationSet Name="CarroModelo" Association="BaseDoProjeto.CarroModelo">
+            <End Role="Carro" EntitySet="Carros" />
             <End Role="Modelo" EntitySet="Modelos" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="CarroMarca">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nome" Type="String" Nullable="false" MaxLength="50" />
-          <Property Name="Descricao" Type="String" Nullable="false" MaxLength="Max" />
-          <NavigationProperty Name="Modelo" Relationship="BaseDoProjeto.CarroMarcaModelo" FromRole="CarroMarca" ToRole="Modelo" />
-        </EntityType>
-        <EntityType Name="Modelo">
+        <EntityType Name="ModeloCar">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nome" Type="String" Nullable="false" MaxLength="50" />
           <Property Name="Ano" Type="String" Nullable="false" MaxLength="10" />
-          <NavigationProperty Name="CarroMarca" Relationship="BaseDoProjeto.CarroMarcaModelo" FromRole="Modelo" ToRole="CarroMarca" />
-          <Property Name="CarroMarcaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Carro" Relationship="BaseDoProjeto.CarroModelo" FromRole="Modelo" ToRole="Carro" />
+          <Property Name="CarroId" Type="Int32" Nullable="false" />
         </EntityType>
-        <Association Name="CarroMarcaModelo">
-          <End Type="BaseDoProjeto.CarroMarca" Role="CarroMarca" Multiplicity="1" />
-          <End Type="BaseDoProjeto.Modelo" Role="Modelo" Multiplicity="*" />
+        <EntityType Name="Carro">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="50" />
+          <Property Name="Descricao" Type="String" Nullable="false" MaxLength="Max" />
+          <Property Name="Popular" Type="Boolean" Nullable="true" />
+          <NavigationProperty Name="Modelo" Relationship="BaseDoProjeto.CarroModelo" FromRole="Carro" ToRole="Modelo" />
+        </EntityType>
+        <Association Name="CarroModelo">
+          <End Type="BaseDoProjeto.Carro" Role="Carro" Multiplicity="1" />
+          <End Type="BaseDoProjeto.ModeloCar" Role="Modelo" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CarroMarca">
+            <Principal Role="Carro">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Modelo">
-              <PropertyRef Name="CarroMarcaId" />
+              <PropertyRef Name="CarroId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -91,22 +93,23 @@
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="BaseDoProjetoStoreContainer" CdmEntityContainer="BaseDoProjetoContainer">
-    <EntitySetMapping Name="CarroMarcas">
-      <EntityTypeMapping TypeName="IsTypeOf(BaseDoProjeto.CarroMarca)">
-        <MappingFragment StoreEntitySet="CarroMarcas">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Nome" ColumnName="Nome" />
-          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Modelos">
-      <EntityTypeMapping TypeName="IsTypeOf(BaseDoProjeto.Modelo)">
+      <EntityTypeMapping TypeName="IsTypeOf(BaseDoProjeto.ModeloCar)">
         <MappingFragment StoreEntitySet="Modelos">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Nome" ColumnName="Nome" />
           <ScalarProperty Name="Ano" ColumnName="Ano" />
-          <ScalarProperty Name="CarroMarcaId" ColumnName="CarroMarcaId" />
+          <ScalarProperty Name="CarroId" ColumnName="CarroId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Carros">
+      <EntityTypeMapping TypeName="IsTypeOf(BaseDoProjeto.Carro)">
+        <MappingFragment StoreEntitySet="Carros">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Popular" ColumnName="Popular" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

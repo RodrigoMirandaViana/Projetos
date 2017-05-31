@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Projeto01.Controllers;
+using Projeto01.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,5 +15,32 @@ namespace Projeto01.Views.CarroMarca
         {
 
         }
+
+        protected void btnSalvar_Click(object sender, EventArgs e)
+        {
+            Carro car = new Carro();
+
+            car.Nome = txtNome.Text;
+            car.Descricao = txtDescricao.Text;
+            car.Popular = true;
+           
+
+            CarrosController ctrl = new CarrosController();
+
+            ctrl.Adicionar(car);
+         }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            txtNome.Text = "";
+            txtDescricao.Text = "";
+        }
+
+        protected void btnCadModelo_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("CadastroModelo.aspx");
+        }
+
+      
     }
 }

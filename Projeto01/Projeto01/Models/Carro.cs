@@ -12,13 +12,20 @@ namespace Projeto01.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Modelo
+    public partial class Carro
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Carro()
+        {
+            this.Modelo = new HashSet<ModeloCar>();
+        }
+    
         public int Id { get; set; }
         public string Nome { get; set; }
-        public string Ano { get; set; }
-        public int CarroMarcaId { get; set; }
+        public string Descricao { get; set; }
+        public Nullable<bool> Popular { get; set; }
     
-        public virtual CarroMarca CarroMarca { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ModeloCar> Modelo { get; set; }
     }
 }
