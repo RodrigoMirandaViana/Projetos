@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/31/2017 10:31:46
+-- Date Created: 06/01/2017 09:07:45
 -- Generated from EDMX file: C:\Users\1615580\Source\Repos\Projetos\Projeto01\Projeto01\Models\BaseDoProjeto.edmx
 -- --------------------------------------------------
 
@@ -17,8 +17,8 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_CarroModelo]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Modelos] DROP CONSTRAINT [FK_CarroModelo];
+IF OBJECT_ID(N'[dbo].[FK_ModeloCarCarro]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Modelos] DROP CONSTRAINT [FK_ModeloCarCarro];
 GO
 
 -- --------------------------------------------------
@@ -41,7 +41,8 @@ CREATE TABLE [dbo].[Modelos] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Nome] nvarchar(50)  NOT NULL,
     [Ano] nvarchar(10)  NOT NULL,
-    [CarroId] int  NOT NULL
+    [CarroId] int  NOT NULL,
+    [Carro_Id] int  NOT NULL
 );
 GO
 
@@ -50,7 +51,7 @@ CREATE TABLE [dbo].[Carros] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Nome] nvarchar(50)  NOT NULL,
     [Descricao] nvarchar(max)  NOT NULL,
-    [Popular] bit  NULL
+    [Popular] bit  NOT NULL
 );
 GO
 
@@ -74,19 +75,19 @@ GO
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on [CarroId] in table 'Modelos'
+-- Creating foreign key on [Carro_Id] in table 'Modelos'
 ALTER TABLE [dbo].[Modelos]
-ADD CONSTRAINT [FK_CarroModelo]
-    FOREIGN KEY ([CarroId])
+ADD CONSTRAINT [FK_ModeloCarCarro]
+    FOREIGN KEY ([Carro_Id])
     REFERENCES [dbo].[Carros]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_CarroModelo'
-CREATE INDEX [IX_FK_CarroModelo]
+-- Creating non-clustered index for FOREIGN KEY 'FK_ModeloCarCarro'
+CREATE INDEX [IX_FK_ModeloCarCarro]
 ON [dbo].[Modelos]
-    ([CarroId]);
+    ([Carro_Id]);
 GO
 
 -- --------------------------------------------------

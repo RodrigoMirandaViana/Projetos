@@ -22,4 +22,6 @@
     <asp:Button ID="btnSalvar" runat="server" Text="Salvar" OnClick="btnSalvar_Click" />
     <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
 
+    <asp:Button ID="btnLista" runat="server" Text="Lista de Cadastros" OnClick="btnLista_Click" />
+
 </asp:Content>

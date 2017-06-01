@@ -17,15 +17,15 @@ namespace Projeto01.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Carro()
         {
-            this.Modelo = new HashSet<ModeloCar>();
+            this.ModeloCar = new HashSet<ModeloCar>();
         }
     
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
-        public Nullable<bool> Popular { get; set; }
+        public bool Popular { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ModeloCar> Modelo { get; set; }
+        public virtual ICollection<ModeloCar> ModeloCar { get; set; }
     }
 }

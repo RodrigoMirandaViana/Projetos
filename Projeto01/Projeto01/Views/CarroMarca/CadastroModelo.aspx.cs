@@ -32,5 +32,10 @@ namespace Projeto01.Views.CarroMarca
         {
             txtNomeModelo.Text = "";
         }
+
+        protected void btnLista_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Lista.aspx");
+        }
     }
 }

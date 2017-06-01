@@ -5,9 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="dc0ca3f1ad3e435e9c67277499ca70a9" Name="Diagram1" >
-        <EntityTypeShape EntityType="BaseDoProjeto.ModeloCar" Width="1.5" PointX="5.125" PointY="1.625" />
-        <EntityTypeShape EntityType="BaseDoProjeto.Carro" Width="1.5" PointX="1.875" PointY="1.75" />
-        <AssociationConnector Association="BaseDoProjeto.CarroModelo" />
+        <EntityTypeShape EntityType="BaseDoProjeto.ModeloCar" Width="1.5" PointX="5.375" PointY="1.75" />
+        <EntityTypeShape EntityType="BaseDoProjeto.Carro" Width="1.5" PointX="2.125" PointY="1.75" />
+        <AssociationConnector Association="BaseDoProjeto.ModeloCarCarro" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
