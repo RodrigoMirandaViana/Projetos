@@ -6,8 +6,9 @@ using System.Web;
 
 namespace Projeto01.Controllers
 {
-    public class ModelosController
+    public class ModelosController : BasePage
     {
+
         protected BaseDoProjetoContainer contexto = new BaseDoProjetoContainer();
 
         public void Adicionar(ModeloCar modelocar)
@@ -27,18 +28,7 @@ namespace Projeto01.Controllers
         {
             return contexto.Modelos.Find(Ano);
         }
-        public void Excluir(ModeloCar modelocar)
-        {
 
-            contexto.Entry(modelocar).State = System.Data.Entity.EntityState.Modified;
-
-            contexto.SaveChanges();
-        }
-        public void Editar(ModeloCar modelocar)
-        {
-            contexto.Entry(modelocar).State = System.Data.Entity.EntityState.Modified;
-
-            contexto.SaveChanges();
-        }
+        
     }
 }

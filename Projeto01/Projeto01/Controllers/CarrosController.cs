@@ -27,25 +27,5 @@ namespace Projeto01.Controllers
         {
             return contexto.Carros.Where(c => c.Popular == false).ToList();
         }
-
-        public Carro BuscarCarroPorAno(int id)
-        {
-            return contexto.Carros.Find(id);
-        }
-
-        public void Excluir(Carro carro)
-        {
-            carro.Popular = false;
-
-            contexto.Entry(carro).State = System.Data.Entity.EntityState.Modified;
-
-            contexto.SaveChanges();
-        }
-        public void Editar(Carro carro)
-        {
-            contexto.Entry(carro).State = System.Data.Entity.EntityState.Modified;
-
-            contexto.SaveChanges();
-        }
     }
 }
