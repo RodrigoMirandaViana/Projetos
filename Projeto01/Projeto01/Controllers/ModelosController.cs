@@ -6,29 +6,43 @@ using System.Web;
 
 namespace Projeto01.Controllers
 {
-    public class ModelosController
+    public class ModelosController : BasePage
     {
 
-        protected BaseDoProjetoContainer contexto = new BaseDoProjetoContainer();
+     
 
-        public void Adicionar(ModeloCar modelocar)
+        public void Adicionar(Modelo modelo)
         {
-            if(modelocar != null)
+            if(modelo != null)
             {
-                contexto.Modelos.Add(modelocar);
+                contexto.Modelos.Add(modelo);
                 contexto.SaveChanges();
             }
         }
-        public List<ModeloCar> Listar()
+        public List<Modelo> Listar()
         {
             return contexto.Modelos.ToList();
         }
 
-        public ModeloCar BuscarModeloPorAno(int Ano)
+        public Modelo BuscarModeloPorNome(Modelo modelo)
         {
-            return contexto.Modelos.Find(Ano);
+            return contexto.Modelos.FirstOrDefault(m => m.Nome == modelo.Nome);
+        }
+        public void Excluir(Modelo modelo)
+        {
+
+            contexto.Entry(modelo).State =
+                System.Data.Entity.EntityState.Deleted;
+
+            contexto.SaveChanges();
+        }
+        public void Editar(Modelo modelo)
+        {
+            contexto.Entry(modelo).State =
+                System.Data.Entity.EntityState.Modified;
+
+            contexto.SaveChanges();
         }
 
-        
     }
 }

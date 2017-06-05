@@ -22,6 +22,15 @@ namespace Projeto01.Views.CarroMarca {
         protected global::System.Web.UI.WebControls.Label lblTitulo;
         
         /// <summary>
+        /// gdvCarros control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gdvCarros;
+        
+        /// <summary>
         /// lblIdCarro control.
         /// </summary>
         /// <remarks>

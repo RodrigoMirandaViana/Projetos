@@ -13,7 +13,7 @@ namespace Projeto01.Views.CarroMarca
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+           
         }
 
         protected void btnSalvar_Click(object sender, EventArgs e)
@@ -22,9 +22,7 @@ namespace Projeto01.Views.CarroMarca
 
             car.Nome = txtNome.Text;
             car.Descricao = txtDescricao.Text;
-            car.Popular = true;
-           
-
+          
             CarrosController ctrl = new CarrosController();
 
             ctrl.Adicionar(car);

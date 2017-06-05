@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CadastroCarro.aspx.cs" Inherits="Projeto01.Views.CarroMarca.CadastroCarro" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="PaginadeEditar.aspx.cs" Inherits="Projeto01.Views.CarroMarca.Pagina_de_Editar" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <br />
-   <h1><asp:Label ID="lbltitulo" runat="server" Text="Cadastro de Marca" BorderStyle="Outset"></asp:Label></h1> 
+   <h1><asp:Label ID="lbltitulo" runat="server" Text="Editar Marca" BorderStyle="Outset"></asp:Label></h1> 
     <br />
     <asp:Label ID="lblNome" runat="server" Text="Nome:" BorderStyle="Outset"></asp:Label><asp:TextBox ID="txtNome" runat="server" Width="185px" BorderStyle="Outset"></asp:TextBox>
     <br />
@@ -12,5 +12,8 @@
    
     <br />
     <asp:Button ID="btnSalvar" runat="server" Text="Salvar" OnClick="btnSalvar_Click" /> <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
-    <asp:Button ID="btnCadModelo" runat="server" Text="CadastrarModelo" OnClick="btnCadModelo_Click" />
+    <br />
+    <br />
+    <asp:GridView ID="gdvCarros" runat="server" BorderStyle="Outset" Width="282px">
+    </asp:GridView>
 </asp:Content>

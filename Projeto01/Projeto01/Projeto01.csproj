@@ -226,6 +226,7 @@
     <Content Include="Views\CarroMarca\CadastroCarro.aspx" />
     <Content Include="Views\CarroMarca\CadastroModelo.aspx" />
     <Content Include="Views\CarroMarca\Lista.aspx" />
+    <Content Include="Views\CarroMarca\PaginadeEditar.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="packages.config" />
@@ -257,8 +258,12 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\CarrosController.cs" />
-    <Compile Include="Controllers\ModelosController.cs" />
+    <Compile Include="Controllers\CarrosController.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controllers\ModelosController.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -287,7 +292,7 @@
     <Compile Include="Models\Carro.cs">
       <DependentUpon>BaseDoProjeto.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModeloCar.cs">
+    <Compile Include="Models\Modelo.cs">
       <DependentUpon>BaseDoProjeto.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -312,7 +317,7 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Views\BasePage.cs">
+    <Compile Include="Controllers\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\CarroMarca\CadastroCarro.aspx.cs">
@@ -335,6 +340,13 @@
     </Compile>
     <Compile Include="Views\CarroMarca\Lista.aspx.designer.cs">
       <DependentUpon>Lista.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CarroMarca\PaginadeEditar.aspx.cs">
+      <DependentUpon>PaginadeEditar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\CarroMarca\PaginadeEditar.aspx.designer.cs">
+      <DependentUpon>PaginadeEditar.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

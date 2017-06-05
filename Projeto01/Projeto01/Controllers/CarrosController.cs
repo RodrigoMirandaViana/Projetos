@@ -6,9 +6,9 @@ using System.Web;
 
 namespace Projeto01.Controllers
 {
-    public class CarrosController
+    public class CarrosController : BasePage
     {
-       protected BaseDoProjetoContainer contexto = new BaseDoProjetoContainer();
+       
         public void Adicionar(Carro carro)
         {
             if (carro != null)
@@ -20,12 +20,20 @@ namespace Projeto01.Controllers
 
         public List<Carro> Listar()
         {
-            return contexto.Carros.Where(c => c.Popular == true).ToList();
+            return contexto.Carros.ToList();
         }
-
-        public List<Carro> ListarNaoPopulares()
+        public Carro BuscarPorID(Carro carro)
         {
-            return contexto.Carros.Where(c => c.Popular == false).ToList();
+            int id = carro.Id;
+            return contexto.Carros.Find(id);
+        }
+        public void Excluir(Carro carro)
+        {
+          
+            contexto.Entry(carro).State =
+                System.Data.Entity.EntityState.Deleted;
+
+            contexto.SaveChanges();
         }
     }
 }

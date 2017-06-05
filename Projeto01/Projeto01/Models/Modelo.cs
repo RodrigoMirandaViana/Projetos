@@ -12,7 +12,7 @@ namespace Projeto01.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ModeloCar
+    public partial class Modelo
     {
         public int Id { get; set; }
         public string Nome { get; set; }
