@@ -22,6 +22,7 @@ namespace Projeto01.Views.CarroMarca
 
             modelo.Nome = txtNomeModelo.Text;
             modelo.Ano = listAno.Text;
+            modelo.CarroId = Convert.ToInt32(txtIdCarro.Text);
 
             ModelosController ctrl = new ModelosController();
 

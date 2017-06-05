@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Projeto01.Controllers
 {
-    public class ModelosController : BasePage
+    public class ModelosController
     {
 
         protected BaseDoProjetoContainer contexto = new BaseDoProjetoContainer();

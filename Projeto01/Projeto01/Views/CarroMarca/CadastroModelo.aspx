@@ -2,6 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h1><asp:Label ID="lblTitulo" runat="server" Text="Cadastro de Modelo"></asp:Label></h1>
     <br />
+    <asp:Label ID="lblIdCarro" runat="server" Text="ID carro" BorderStyle="Outset"></asp:Label>
+    <asp:TextBox ID="txtIdCarro" runat="server"></asp:TextBox>
+    <br />
     <asp:Label ID="lblNomeModelo" runat="server" Text="Nome" BorderStyle="Outset"></asp:Label>
     <asp:TextBox ID="txtNomeModelo" runat="server"></asp:TextBox>
     <br />
