@@ -66,9 +66,33 @@ namespace Projeto01.Views.CarroMarca
 
         protected void btnEditarmod_Click(object sender, EventArgs e)
         {
-           
-              
+
+            Modelo mod = new Modelo();
+
+            mod.Nome = txtNome.Text;
+            mod = modelo.BuscarModeloPorNome(mod);
+            if (mod != null)
+            {
+                mod.Nome = txtNomeEditar1.Text;
+                mod.Ano = listAno.Text;
+                modelo.Editar(mod);
+                AtualizarLista();
+            }
         }
 
-     }
+        protected void btnEditarcar_Click(object sender, EventArgs e)
+        {
+            Carro car = new Carro();
+  
+            car.Id = int.Parse(txtId.Text);
+            car = ctrl.BuscarPorID(car);
+            if(car != null)
+            {
+                car.Nome = txtNomeEditar.Text;
+                car.Descricao = txtDescricaoEditar.Text;
+                ctrl.Editar(car);
+                AtualizarLista();
+            }
+        }
+    }
  }

@@ -35,5 +35,12 @@ namespace Projeto01.Controllers
 
             contexto.SaveChanges();
         }
+        public void Editar(Carro carro)
+        {
+            contexto.Entry(carro).State =
+                System.Data.Entity.EntityState.Modified;
+
+            contexto.SaveChanges();
+        }
     }
 }
